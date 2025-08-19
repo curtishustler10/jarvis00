@@ -1,0 +1,20 @@
+{
+  "name": "jarvis00",
+  "version": "1.0.0",
+  "description": "Local supercharged AI agent assistant",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.6.0",
+    "typescript": "^5.4.5",
+    "@types/uuid": "^9.0.0",
+    "@types/node": "^20.11.0"
+  }
+}
