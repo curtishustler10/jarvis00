@@ -1,8 +1,10 @@
 import { v4 as uuid } from "uuid";
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
 
-const MEMORY_FILE = "data/memory.json";
-const TASK_FILE = "data/tasks.json";
+const DATA_DIR = "data";
+const MEMORY_FILE = path.join(DATA_DIR, "memory.json");
+const TASK_FILE = path.join(DATA_DIR, "tasks.json");
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
 export interface MemoryItem {
@@ -38,6 +40,9 @@ export default class Agent {
 
   constructor(apiKey: string) {
     this.apiKey = apiKey;
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
     this.memories = readJson(MEMORY_FILE);
     this.tasks = readJson(TASK_FILE);
   }
